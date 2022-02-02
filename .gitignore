@@ -1,2 +1,3 @@
+docker/web/.env
 config.toml
 .idea

@@ -1,6 +1,8 @@
 package repository
 
-import "goodwe_monitor/domain/reading"
+import (
+	"goodwe_monitor/domain/reading"
+)
 
 type ReadingRepository interface {
 	Save(*reading.Reading) error

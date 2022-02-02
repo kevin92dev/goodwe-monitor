@@ -1,6 +1,8 @@
 package data_transfer_object
 
-import "goodwe_monitor/domain/value_object"
+import (
+	"goodwe_monitor/domain/value_object"
+)
 
 type LoginResponse struct {
 	HasError   bool               `json:"hasError"`

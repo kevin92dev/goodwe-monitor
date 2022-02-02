@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/google/uuid"
+	"github.com/jasonlvhit/gocron"
 	"goodwe_monitor/application"
 	"goodwe_monitor/config"
 	"goodwe_monitor/domain/reading"
@@ -12,8 +13,8 @@ import (
 	"time"
 )
 
-func main() {
-	if application.Login() {
+func task() {
+    if application.Login() {
 		readingResponse := application.GetCurrentReadings()
 
 		powerFlow := readingResponse.Data.Powerflow
@@ -53,4 +54,10 @@ func main() {
 		repo := persistence.NewReadingRepositoryWithRDB(conn)
 		repo.Save(&currentReading)
 	}
+}
+
+func main() {
+    gocron.Every(5).Seconds().Do(task)
+
+    <- gocron.Start()
 }
